@@ -1,10 +1,24 @@
-function createCard(name, description, picture_url){
+function dateFormat(dateToFormat){
+    const date = new Date(dateToFormat)
+    const month = date.getMonth()+1;
+    const day = date.getDate();
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`
+}
+
+
+function createCard(name, description, picture_url,starts,ends){
+    const formattedStart = dateFormat(starts);
+    const formattedEnd = dateFormat(ends);
     return `
-    <div class="card">
+    <div class="card shadow mb-4">
       <img src="${picture_url}" class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">${name}</h5>
         <p class="card-text">${description}</p>
+      </div>
+      <div class="card-footer">
+        ${formattedStart} - ${formattedEnd}
       </div>
     </div>
   `;
@@ -24,17 +38,28 @@ window.addEventListener('DOMContentLoaded', async () => {
       } else {
         const data = await response.json();
 
+        const columns = document.querySelectorAll(".col");
+        let columnIndex = 0;
+
         for (let conference of data.conferences) {
           const detailUrl = `http://localhost:8000${conference.href}`;
           const detailResponse = await fetch(detailUrl);
           if (detailResponse.ok) {
             const details = await detailResponse.json();
+            console.log(details);
             const title = details.conference.name;
             const description = details.conference.description;
             const pictureUrl = details.conference.picture_url;
-            const html = createCard(title, description, pictureUrl);
-            const column = document.querySelector('.col');
-            column.innerHTML += html;
+            const starts = details.conference.starts;
+            const ends = details.conference.ends;
+            const html = createCard(title, description, pictureUrl,starts,ends);
+
+            // const column = document.querySelector('.col');
+            // column.innerHTML += html;
+            const column = columns[columnIndex]
+            column.innerHTML += html
+
+            columnIndex = (columnIndex +1)%columns.length;
 
           }
         }
