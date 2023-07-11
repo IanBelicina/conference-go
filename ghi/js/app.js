@@ -7,7 +7,7 @@ function dateFormat(dateToFormat){
 }
 
 
-function createCard(name, description, picture_url,starts,ends){
+function createCard(name, description, picture_url,starts,ends,location){
     const formattedStart = dateFormat(starts);
     const formattedEnd = dateFormat(ends);
     return `
@@ -15,6 +15,7 @@ function createCard(name, description, picture_url,starts,ends){
       <img src="${picture_url}" class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">${name}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">${location}</h6>
         <p class="card-text">${description}</p>
       </div>
       <div class="card-footer">
@@ -52,7 +53,8 @@ window.addEventListener('DOMContentLoaded', async () => {
             const pictureUrl = details.conference.picture_url;
             const starts = details.conference.starts;
             const ends = details.conference.ends;
-            const html = createCard(title, description, pictureUrl,starts,ends);
+            const location = details.conference.location.name;
+            const html = createCard(title, description, pictureUrl,starts,ends,location);
 
             // const column = document.querySelector('.col');
             // column.innerHTML += html;
