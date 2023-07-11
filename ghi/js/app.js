@@ -1,3 +1,21 @@
+
+function badResponse(){
+    return`
+    <div class="alert alert-danger" role="alert">
+        Bad response! You are not ok!
+    </div>
+    `;
+}
+
+function giveCatchError(){
+    return`
+    <div class="alert alert-danger" role="alert">
+        Fetch failed! You're in the catch!
+    </div>
+    `;
+}
+
+
 function dateFormat(dateToFormat){
     const date = new Date(dateToFormat)
     const month = date.getMonth()+1;
@@ -35,7 +53,11 @@ window.addEventListener('DOMContentLoaded', async () => {
 
       if (!response.ok) {
         // Figure out what to do when the response is bad
-        console.log("bad response");
+        const mainTag1 = document.querySelector('main');
+        const badResponse = badResponse();
+        mainTag1.innerHTML = badResponse;
+
+
       } else {
         const data = await response.json();
 
@@ -56,8 +78,6 @@ window.addEventListener('DOMContentLoaded', async () => {
             const location = details.conference.location.name;
             const html = createCard(title, description, pictureUrl,starts,ends,location);
 
-            // const column = document.querySelector('.col');
-            // column.innerHTML += html;
             const column = columns[columnIndex]
             column.innerHTML += html
 
@@ -68,8 +88,10 @@ window.addEventListener('DOMContentLoaded', async () => {
 
       }
     } catch (e) {
-      // Figure out what to do if an error is raised
-      console.log("in the catch");
+      // Figure out what to do if an error is raised\
+      const mainTag = document.querySelector('main');
+      const errorMessage = giveCatchError();
+      mainTag.innerHTML = errorMessage;
     }
 
   });
