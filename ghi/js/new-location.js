@@ -6,12 +6,20 @@ window.addEventListener('DOMContentLoaded', async () => {
         const data = await response.json();
         console.log(data);
 
+        // Get the select tag element by its id 'state'
         const selectTag = document.querySelector("#state");
-        for (let state of data.states){
-            let optionElement = document.createElement("option");
-            optionElement.value = state.abbreviation;
-            optionElement.innerHTML = state.name;
 
+        // For each state in the states property of the data
+        for (let state of data.states){
+            // Create an 'option' element
+            let optionElement = document.createElement("option");
+            // Set the '.value' property of the option element to the
+            // state's abbreviation
+            optionElement.value = state.abbreviation;
+             // Set the '.innerHTML' property of the option element to
+            // the state's name
+            optionElement.innerHTML = state.name;
+            // Append the option element as a child of the select tag
             selectTag.appendChild(optionElement);
         }
     }
