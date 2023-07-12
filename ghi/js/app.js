@@ -28,6 +28,7 @@ function dateFormat(dateToFormat){
 function createCard(name, description, picture_url,starts,ends,location){
     const formattedStart = dateFormat(starts);
     const formattedEnd = dateFormat(ends);
+
     return `
     <div class="card shadow mb-4">
       <img src="${picture_url}" class="card-img-top">
@@ -40,6 +41,7 @@ function createCard(name, description, picture_url,starts,ends,location){
         ${formattedStart} - ${formattedEnd}
       </div>
     </div>
+
   `;
 }
 
