@@ -6,4 +6,5 @@ urlpatterns = [
     path("api/", include("events.api_urls")),
     path("api/", include("presentations.api_urls")),
     path("api/", include("accounts.api_urls")),
+    path("", include("djwto.urls")),
 ]

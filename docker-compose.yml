@@ -10,6 +10,7 @@ services:
       WAIT_TIMEOUT: 180
       PEXELS_API_KEY: ${PEXELS_API_KEY}
       OPEN_WEATHER_API_KEY: ${OPEN_WEATHER_API_KEY}
+      DJWTO_SIGNING_KEY: ${DJWTO_SIGNING_KEY}
     ports:
       - "8000:8000"
     volumes:
