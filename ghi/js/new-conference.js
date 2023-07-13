@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       const selectTag = document.querySelector("#location");
 
       for (let location of data.locations){
+        // console.log(location)
         const optionElement = document.createElement("option");
         const arrayLocation = location.href.split("/");
         const locationId = arrayLocation[3];
