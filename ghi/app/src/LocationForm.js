@@ -27,6 +27,39 @@ function LocationForm() {
     setState(value);
   }
 
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const data = {}
+
+    data.room_count = roomCount;
+    data.name = name;
+    data.city = city;
+    data.state = state;
+
+
+    const locationUrl = "http://localhost:8000/api/locations/";
+    const fetchConfig = {
+        method: "post",
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+    const response = await fetch(locationUrl, fetchConfig);
+    if (response.ok) {
+        const newLocation = await response.json();
+        console.log(newLocation);
+
+        setName('');
+        setRoomCount('');
+        setCity('');
+        setState('');
+      }
+  }
+
   const fetchData = async () => {
     const url = 'http://localhost:8000/api/states/';
 
@@ -34,7 +67,7 @@ function LocationForm() {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data)
+
       const states = data.states;
       setStates(states);
     }
@@ -51,13 +84,14 @@ function LocationForm() {
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
             <h1>Create a new location</h1>
-            <form id="create-location-form">
+            <form onSubmit={handleSubmit} id="create-location-form">
               <div className="form-floating mb-3">
                 <input onChange={handleNameChange} placeholder="Name"
                        required type="text"
                        name="name"
                        id="name"
-                       className="form-control" />
+                       className="form-control"
+                       value={name} />
                 <label htmlFor="name">Name</label>
               </div>
               <div className="form-floating mb-3">
@@ -65,7 +99,8 @@ function LocationForm() {
                        required type="number"
                        name="room_count"
                        id="room_count"
-                       className="form-control"/>
+                       className="form-control"
+                       value={roomCount}/>
                 <label htmlFor="room_count">Room count</label>
               </div>
               <div className="form-floating mb-3">
@@ -73,13 +108,15 @@ function LocationForm() {
                        required type="text"
                        name="city"
                        id="city"
-                       className="form-control"/>
+                       className="form-control"
+                       value={city}/>
                 <label htmlFor="city">City</label>
               </div>
               <div className="mb-3">
                 <select onChange={handleStateChange} required name="state"
                         id="state"
-                        className="form-select">
+                        className="form-select"
+                        value={state}>
                   <option   value="">Choose a state</option>
                   {states.map(state => {
                     return(

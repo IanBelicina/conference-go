@@ -21,7 +21,7 @@ async function loadAttendees() {
   const response = await fetch('http://localhost:8001/api/attendees/');
   if(response.ok){
     const data = await response.json();
-    console.log(data)
+    // console.log(data)
     root.render(
       <React.StrictMode>
         <App attendees={data.attendees} />

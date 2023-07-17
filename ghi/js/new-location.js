@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const response = await fetch(url);
     if (response.ok){
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
 
         // Get the select tag element by its id 'state'
         const selectTag = document.querySelector("#state");
@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
         const formData = new FormData(formTag);
         const json = JSON.stringify(Object.fromEntries(formData));
-        console.log(json);
+        // console.log(json);
         const locationUrl = "http://localhost:8000/api/locations/";
         const fetchConfig = {
             method: "post",
