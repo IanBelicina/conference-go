@@ -127,7 +127,7 @@ function ConferenceForm () {
               </div>
               <div className="form-floating mb-3">
                 <input onChange={handleStartChange} placeholder="Starts"
-                       required type="datetime-local"
+                       required type="date"
                        name="starts" id="starts"
                        className="form-control"
                        value={start} />
@@ -135,7 +135,7 @@ function ConferenceForm () {
               </div>
               <div className="form-floating mb-3">
                 <input onChange={handleEndChange} placeholder="Ends"
-                       required type="datetime-local"
+                       required type="date"
                        name="ends"
                        id="ends"
                        className="form-control"
