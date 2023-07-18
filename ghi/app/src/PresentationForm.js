@@ -141,7 +141,7 @@ function PresentationForm(){
                           id="synopsis"
                           rows="3"
                           name="synopsis"
-                          className="form-control"></textarea>
+                          ></textarea>
               </div>
               <div className="mb-3">
                 <select onChange={handleConferenceChange} value={conference} required name="conference"
