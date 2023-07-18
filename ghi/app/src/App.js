@@ -17,16 +17,16 @@ function App(props) {
 
     <BrowserRouter>
       <Nav />
-      <div className="container">
-        <Routes>
-          <Route index element={<MainPage />} />
-          <Route path="attendees/new" element={<AttendConferenceForm />} />
-          <Route path="conferences/new" element={<ConferenceForm />} />
-          <Route path="locations/new" element={<LocationForm />} />
-          <Route path="attendees" element={<AttendeesList attendees={props.attendees} />}/>
-          <Route path="presentations/new" element={<PresentationForm />}/>
-        </Routes>
-      </div>
+
+      <Routes>
+        <Route index element={<MainPage />} />
+        <Route path="attendees/new" element={<AttendConferenceForm />} />
+        <Route path="conferences/new" element={<ConferenceForm />} />
+        <Route path="locations/new" element={<LocationForm />} />
+        <Route path="attendees" element={<AttendeesList attendees={props.attendees} />}/>
+        <Route path="presentations/new" element={<PresentationForm />}/>
+      </Routes>
+
     </BrowserRouter>
 
 
