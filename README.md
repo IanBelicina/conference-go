@@ -10,7 +10,7 @@ Conference Go is a web application that simplifies conference management for org
   -Node.js
   -Docker
 
-  1. Fork and clone this repository to your computer <[[https://gitlab.com/vancebelicina/project-beta](https://github.com/IanBelicina/wheel-works.git)](https://github.com/IanBelicina/conference-go.git)>
+  1. Fork and clone this repository to your computer <https://github.com/IanBelicina/conference-go.git>
   2. Build the project and run the project in docker using the following commands in the terminal
     - docker volume create pgdata
     - docker-compose build
@@ -26,6 +26,19 @@ Conference Go is a web application that simplifies conference management for org
 
 
 ## Accounts Microservice
+
+The Accounts microservice in this application provides a set of CRUD APIs, allowing users to seamlessly manage and interact with account infromation. These APIs empower users to Create new accounts, Read existing accounts, Update account information, and Delete accounts as needed. Below is a table of how you can access these endpoints and examples of expected input and output json responses.
+
+| Action                     | Method | URL                                                 |
+| -------------------------- | ------ | --------------------------------------------------- |
+| Get all accounts   | GET    | http://localhost:8000/api/accounts/  |
+| Get account                | GET    | http://localhost:8000/api/accounts/<email>/ |
+| Update account  | PUT    | http://localhost:8000/api/accounts/<email>/ |
+| Delete account  | DELETE | http://localhost:8000/api/accounts/<email>/ |
+| Create account  | POST   | http://localhost:8000/api/accounts/             |
+
+
+
 
 ## Presentations Microservice
 
