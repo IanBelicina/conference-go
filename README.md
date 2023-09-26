@@ -32,7 +32,7 @@ The Accounts microservice in this application provides a set of CRUD APIs, allow
 | Action                     | Method | URL                                                 |
 | -------------------------- | ------ | --------------------------------------------------- |
 | Get all accounts   | GET    | http://localhost:8000/api/accounts/  |
-| Get account                | GET    | http://localhost:8000/api/accounts/<email>/ |
+| Get account                | GET    | http://localhost:8000/api/accounts/{email}/ |
 | Update account  | PUT    | http://localhost:8000/api/accounts/<email>/ |
 | Delete account  | DELETE | http://localhost:8000/api/accounts/<email>/ |
 | Create account  | POST   | http://localhost:8000/api/accounts/             |
