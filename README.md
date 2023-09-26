@@ -32,9 +32,9 @@ The Accounts microservice in this application provides a set of CRUD APIs, allow
 | Action                     | Method | URL                                                 |
 | -------------------------- | ------ | --------------------------------------------------- |
 | Get all accounts   | GET    | http://localhost:8000/api/accounts/  |
-| Get account                | GET    | http://localhost:8000/api/accounts/{email}/ |
-| Update account  | PUT    | http://localhost:8000/api/accounts/<email>/ |
-| Delete account  | DELETE | http://localhost:8000/api/accounts/<email>/ |
+| Get account                | GET    | http://localhost:8000/api/accounts/{str:email}/ |
+| Update account  | PUT    | http://localhost:8000/api/accounts/{str:email}/ |
+| Delete account  | DELETE | http://localhost:8000/api/accounts/{str:email}/ |
 | Create account  | POST   | http://localhost:8000/api/accounts/             |
 
 ### Get all accounts
@@ -61,7 +61,7 @@ Response Body:
 
 ### Get account
 
-Endpoint Input: email
+Endpoint Input: {str:email}
 
 Response Body:
 
@@ -74,7 +74,7 @@ Response Body:
 ```
 
 ### Update account
-Endpoint Input: <email>
+Endpoint Input: {str:email}
 Input body:
 
 ```
@@ -90,6 +90,39 @@ Response Body:
 	"email": "noor@example.com",
 	"first_name": "Noor",
 	"last_name": "Sayid-Alexanderson"
+}
+```
+
+### Delete account
+Endpoint Input: {str:email}
+
+Response Body:
+```
+{
+	"deleted": true
+}
+```
+
+### Create account
+
+Input body:
+
+```
+{
+  "username": "ian",
+  "email": "ian@example.com",
+  "password": "yqVy8SSZ",
+  "first_name": "ian",
+  "last_name": "belicina"
+}
+```
+
+Response body:
+```
+{
+	"email": "ian@example.com",
+	"first_name": "ian",
+	"last_name": "belicina"
 }
 ```
 
