@@ -518,3 +518,162 @@ Response body:
 
 ## Conferences MicroService
 
+The conferences microservice in this application provides a set of CRUD APIs, allowing users to seamlessly manage and interact with conference infromation. These APIs empower users to Create new conferences, Read existing conferences, Update location conferences, and Delete conferences as needed. Below is a table of how you can access these endpoints and examples of expected input and output json responses.
+
+
+| Action                     | Method | URL                                                 |
+| -------------------------- | ------ | --------------------------------------------------- |
+| Get all conferences   | GET    | http://localhost:8000/api/conferences/  |
+| Get conference                | GET    | http://localhost:8000/api/conferences/{int: conference_id}/ |
+| Update conference  | PUT    |  http://localhost:8000/api/conferences/{int: conference_id}/ |
+| Delete conference  | DELETE | http://localhost:8000/api/conferences/{int: conference_id}/ |
+| Create conference  | POST   | http://localhost:8000/api/conferences/             |
+
+
+### Get all conferences
+
+Response body:
+
+```
+{
+	"conferences": [
+		{
+			"href": "/api/conferences/7/",
+			"name": "New Conference 1"
+		},
+		{
+			"href": "/api/conferences/6/",
+			"name": "Cat Conference"
+		},
+		{
+			"href": "/api/conferences/5/",
+			"name": "Anime Con"
+		}
+	]
+}
+```
+
+### Get conference 
+
+Enpoint input: {int:conference_id}
+
+Response body:
+
+```
+{
+	"conference": {
+		"href": "/api/conferences/1/",
+		"name": "Blockchain USA Conference 2025",
+		"description": "Two jam-packed days of featured sessions, keynotes, panels and fireside chats exploring the latest trends and developments in blockchain technology and cryptocurrencies, both in Africa and globally. The conference brings together top thought-leaders and pioneers in the global industry, and creates an ecosystem for all to learn, network, and collaborate with each other.",
+		"max_presentations": 20,
+		"max_attendees": 1000,
+		"starts": "2025-08-01T00:00:00+00:00",
+		"ends": "2025-08-05T00:00:00+00:00",
+		"created": "2023-07-11T19:26:33.348913+00:00",
+		"updated": "2023-07-11T19:26:33.348937+00:00",
+		"location": {
+			"href": "/api/locations/1/",
+			"name": "George R. Brown Convention Center",
+			"id": 1
+		},
+		"picture_url": "https://images.pexels.com/photos/3643104/pexels-photo-3643104.jpeg"
+	},
+	"weather": {
+		"description": "clear sky",
+		"temp": 86.58
+	}
+}
+```
+
+
+### Update conference
+
+Endpoint input: {int: conference_id}
+
+Input body:
+
+```
+{
+	"name": "DEVintersection",
+	"description": "DEVintersection is an annual conference led by top Microsoft experts as they dive deep into new software developments and its intersection with technology. Featuring 100+ in-depth sessions presented by Microsoft engineers and other industry leaders, the 2022 conference will cover topics such as Azure, SQL Server, AI, Big Data, Machine Learning, and more.",
+	"max_presentations": 120,
+	"max_attendees": 25000
+}
+```
+
+Response body:
+
+```
+{
+	"conference": {
+		"href": "/api/conferences/{int: conference_id}/",
+		"name": "DEVintersection",
+		"description": "DEVintersection is an annual conference led by top Microsoft experts as they dive deep into new software developments and its intersection with technology. Featuring 100+ in-depth sessions presented by Microsoft engineers and other industry leaders, the 2022 conference will cover topics such as Azure, SQL Server, AI, Big Data, Machine Learning, and more.",
+		"max_presentations": 120,
+		"max_attendees": 25000,
+		"starts": "2025-08-01T00:00:00+00:00",
+		"ends": "2025-08-05T00:00:00+00:00",
+		"created": "2023-07-11T19:26:33.348913+00:00",
+		"updated": "2023-07-12T19:26:33.348937+00:00",
+		"location": {
+			"href": "/api/locations/1/",
+			"name": "George R. Brown Convention Center",
+			"id": 1
+		},
+		"picture_url": "https://images.pexels.com/photos/3643104/pexels-photo-3643104.jpeg"
+	},
+	"weather": {
+		"description": "clear sky",
+		"temp": 86.58
+	}
+}
+```
+### Delete conference
+
+Endpoint input: {int: conference_id}
+
+Response body:
+
+```
+{
+	"deleted": true
+}
+```
+
+
+### Create conference
+
+Input body:
+
+```
+{
+  "name": "Seattle Startup Conference",
+  "starts": "2025-03-24",
+  "ends": "2025-03-26",
+  "description": "On behalf of the Organizing Committee, we are ecstatic to invite you to 'Tech Summit on Artificial Intelligence & Robotics'",
+  "max_presentations": 70,
+  "max_attendees": 10000,
+  "location": 4
+}
+```
+
+Response body:
+
+```
+{
+	"href": "/api/conferences/4/",
+	"name": "Seattle Startup Conference",
+	"description": "On behalf of the Organizing Committee, we are ecstatic to invite you to 'Tech Summit on Artificial Intelligence & Robotics'",
+	"max_presentations": 70,
+	"max_attendees": 10000,
+	"starts": "2025-03-24",
+	"ends": "2025-03-26",
+	"created": "2023-07-11T22:56:06.591589+00:00",
+	"updated": "2023-07-11T22:56:06.591604+00:00",
+	"location": {
+		"href": "/api/locations/4/",
+		"name": "Columbia Tower"
+	},
+	"picture_url": "https://images.pexels.com/photos/14775586/pexels-photo-14775586.jpeg"
+}
+```
