@@ -25,7 +25,7 @@ Conference Go is a web application that simplifies conference management for org
     - This will open a new window in your browser running the react application.
 
 
-## Accounts Microservice
+## Accounts 
 
 The Accounts microservice in this application provides a set of CRUD APIs, allowing users to seamlessly manage and interact with account infromation. These APIs empower users to Create new accounts, Read existing accounts, Update account information, and Delete accounts as needed. Below is a table of how you can access these endpoints and examples of expected input and output json responses.
 
@@ -127,7 +127,7 @@ Response body:
 ```
 
 
-## Presentations Microservice
+## Presentations 
 
 The Presentations microservice in this application provides a set of CRUD APIs, allowing users to seamlessly manage and interact with presentation infromation. These APIs empower users to Create new presentations, Read existing presentations, Update presentation information, and Delete presentations as needed. Below is a table of how you can access these endpoints and examples of expected input and output json responses.
 
@@ -254,7 +254,122 @@ Body response:
 }
 ```
 
-## Attendees Microservice
+## Attendees 
+The attendees microservice in this application provides a set of CRUD APIs, allowing users to seamlessly manage and interact with attendee infromation. These APIs empower users to Create new attendees, Read existing attendees, Update attendee information, and Delete attendees as needed. Below is a table of how you can access these endpoints and examples of expected input and output json responses.
+
+| Action                     | Method | URL                                                 |
+| -------------------------- | ------ | --------------------------------------------------- |
+| Get all attendees   | GET    | http://localhost:8001/api/conferences/{int:conference_id}/attendees/  |
+| Get attendee                | GET    | http://localhost:8001/api/attendees/{int: attendee_id}/ |
+| Update attendee  | PUT    | http://localhost:8000/api/attendees/{int: attendee_id}/ |
+| Delete attendee  | DELETE | http://localhost:8000/api/attendees/{int: attendee_id}/ |
+| Create attendee  | POST   | http://localhost:8001/api/conferences/{int: conference_id}/attendees/             |
+
+### Get all attendees
+
+Response body:
+```
+{
+	"attendees": [
+		{
+			"href": "/api/attendees/{int: conference_id}/",
+			"name": "Test",
+			"conference": "New Conference 1"
+		}
+	]
+}
+```
+
+### Get attendee
+
+Endpoint input: {int: attendee_id}
+
+Response body:
+
+```
+{
+	"href": "/api/attendees/1/",
+	"email": "jd@example.com",
+	"name": "John Doe",
+	"company_name": null,
+	"created": "2023-07-13T20:43:49.537235+00:00",
+	"conference": {
+		"name": "Cat Conference",
+		"import_href": "/api/conferences/6/"
+	},
+	"has_account": false
+}
+```
+
+### Update attendee
+
+Endpoint input: {int: attendee_id}
+
+Input body:
+
+```
+{
+	"email": "angelo@example.com",
+	"name": "Angelo",
+	"company_name": "BlogXS"
+}
+```
+
+Response body:
+
+```
+{
+	"href": "/api/attendees/5/",
+	"email": "angelo@example.com",
+	"name": "Angelo",
+	"company_name": "BlogXS",
+	"created": "2023-07-14T19:47:47.419524+00:00",
+	"conference": {
+		"name": "Blockchain USA Conference 2025",
+		"import_href": "/api/conferences/1/"
+	},
+	"has_account": false
+}
+```
+
+### Delete attendee
+
+Endpoint input: {int: attendee_id}
+
+Response body:
+
+```
+{
+	"deleted": true
+}
+```
+
+### Create attendee
+
+Input body:
+```
+{
+  "email": "angelo@example.com",
+  "name": "Angelo",
+	"conference": "/api/conferences/1/"
+}
+```
+
+Response body:
+```
+{
+	"href": "/api/attendees/5/",
+	"email": "angelo@example.com",
+	"name": "Angelo",
+	"company_name": null,
+	"created": "2023-07-14T19:47:47.419524+00:00",
+	"conference": {
+		"name": "Blockchain USA Conference 2025",
+		"import_href": "/api/conferences/1/"
+	},
+	"has_account": false
+}
+```
 
 ## Locations Microservice
 
