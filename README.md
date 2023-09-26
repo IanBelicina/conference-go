@@ -61,7 +61,7 @@ Response Body:
 
 ### Get account
 
-Endpoint Input: <email>
+Endpoint Input: email
 
 Response Body:
 
