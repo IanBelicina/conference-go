@@ -371,7 +371,150 @@ Response body:
 }
 ```
 
-## Locations Microservice
+## Locations 
+
+The locations microservice in this application provides a set of CRUD APIs, allowing users to seamlessly manage and interact with location infromation. These APIs empower users to Create new locations, Read existing locations, Update location information, and Delete locations as needed. Below is a table of how you can access these endpoints and examples of expected input and output json responses.
+
+
+| Action                     | Method | URL                                                 |
+| -------------------------- | ------ | --------------------------------------------------- |
+| Get all locations   | GET    | http://localhost:8000/api/locations/  |
+| Get location                | GET    | http://localhost:8000/api/locations/{int: location_id}/|
+| Update location  | PUT    |  http://localhost:8000/api/locations/{int: location_id}/ |
+| Delete location  | DELETE | http://localhost:8000/api/locations/{int: location_id}/ |
+| Create location  | POST   | http://localhost:8000/api/locations/             |
+
+
+### Get all locations
+
+Response body:
+```
+{
+	"locations": [
+		{
+			"href": "/api/locations/4/",
+			"name": "Columbia Tower",
+			"id": 4
+		},
+		{
+			"href": "/api/locations/1/",
+			"name": "George R. Brown Convention Center",
+			"id": 1
+		},
+		{
+			"href": "/api/locations/5/",
+			"name": "House",
+			"id": 5
+		},
+		{
+			"href": "/api/locations/2/",
+			"name": "McCormick Place",
+			"id": 2
+		},
+		{
+			"href": "/api/locations/7/",
+			"name": "Moda Center",
+			"id": 7
+		},
+		{
+			"href": "/api/locations/6/",
+			"name": "Naruto House",
+			"id": 6
+		},
+		{
+			"href": "/api/locations/3/",
+			"name": "Space Needle",
+			"id": 3
+		}
+	]
+}
+```
+
+### Get location
+
+Enpoint input: {int: location_id}
+
+Response body:
+
+```
+{
+	"href": "/api/locations/{location_id}/",
+	"name": "Naruto House",
+	"city": "Seattle",
+	"room_count": 1,
+	"created": "2023-07-12T22:41:46.012805+00:00",
+	"updated": "2023-07-12T22:41:46.012824+00:00",
+	"picture_url": "https://images.pexels.com/photos/2441334/pexels-photo-2441334.jpeg",
+	"state": "WA"
+}
+```
+
+### Update location
+
+Enpoint input: {int: location_id}
+Input body:
+```
+{
+  "name": "Columbia Tower",
+  "city": "Seattle",
+  "room_count": 10,
+  "state": "WA"
+}
+```
+
+Response body:
+
+```
+{
+	"href": "/api/locations/4/",
+	"name": "Columbia Tower",
+	"city": "Seattle",
+	"room_count": 10,
+	"created": "2023-07-11T22:52:23.439036+00:00",
+	"updated": "2023-07-11T22:52:23.439054+00:00",
+	"picture_url": "https://images.pexels.com/photos/14775586/pexels-photo-14775586.jpeg",
+	"state": "WA"
+}
+```
+
+### Delete location
+
+Endpoint input: {int: location_id}
+
+Response body:
+```
+{
+	"deleted": true
+}
+```
+
+### Create location
+
+
+Input body:
+```
+{
+  "name": "Columbia Tower",
+  "city": "Seattle",
+  "room_count": 10,
+  "state": "WA"
+}
+```
+
+Response body:
+
+```
+{
+	"href": "/api/locations/4/",
+	"name": "Columbia Tower",
+	"city": "Seattle",
+	"room_count": 10,
+	"created": "2023-07-11T22:52:23.439036+00:00",
+	"updated": "2023-07-11T22:52:23.439054+00:00",
+	"picture_url": "https://images.pexels.com/photos/14775586/pexels-photo-14775586.jpeg",
+	"state": "WA"
+}
+```
 
 ## Conferences MicroService
 
