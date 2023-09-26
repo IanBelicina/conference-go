@@ -37,7 +37,61 @@ The Accounts microservice in this application provides a set of CRUD APIs, allow
 | Delete account  | DELETE | http://localhost:8000/api/accounts/<email>/ |
 | Create account  | POST   | http://localhost:8000/api/accounts/             |
 
+### Get all accounts
 
+
+Response Body:
+
+```
+{
+	"accounts": [
+		{
+			"email": "ian@example.com",
+			"first_name": "Ian",
+			"last_name": "Belicina"
+		},
+		{
+			"email": "jiji@example.com",
+			"first_name": "Jiji",
+			"last_name": "Montenegro"
+		},
+	]
+}
+```
+
+### Get account
+
+Endpoint Input: <email>
+
+Response Body:
+
+```
+{
+	"email": "ian@example.com",
+	"first_name": "Ian",
+	"last_name": "Belicina"
+}
+```
+
+### Update account
+Endpoint Input: <email>
+Input body:
+
+```
+{
+  "first_name": "Noor",
+  "last_name": "Sayid-Alexanderson"
+}
+```
+
+Response Body:
+```
+{
+	"email": "noor@example.com",
+	"first_name": "Noor",
+	"last_name": "Sayid-Alexanderson"
+}
+```
 
 
 ## Presentations Microservice
